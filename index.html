@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PrettyCovers - Create beautiful cover images for your blogs</title>
+  <meta name="description" content=" Create beautiful cover images for your blogs" />
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+
+
+  <link rel="stylesheet" href="index.css" />
+
+</head>
+
+<body>
+  <main role="main" class="container">
+    <header>
+      <h1 class="app-title">Covers.</h1>
+      <div>
+        <a href="#">github logo</a>
+      </div>
+    </header>
+
+    <section class="workspace">
+      <div class="editor">
+        <div id="editBoard">
+          <div id="text" class="text" contenteditable="true" aria-placeholder="Text goes here">
+            Text goes here
+          </div>
+        </div>
+      </div>
+
+
+      <div class="controls">
+
+        <div class="actions ">
+          <button id="download">Download</button>
+          <button id="random">Randomize</button>
+        </div>
+
+        <div class="flex">
+          <h3>Background Color</h3>
+          <div id="bgc" class="color">g</div>
+        </div>
+        <div class="flex">
+          <h3>Foreground Color</h3>
+          <div id="fgc" class="color">g</div>
+        </div>
+        <div class="flex">
+          <h3>Border Color</h3>
+          <div id="bc" class="color">g</div>
+        </div>
+        <div class="flex">
+          <h3>Border Width</h3>
+          <input type="number" id="borderWidth" value="0" min="0" max="50">
+
+        </div>
+
+        <div class="flex">
+          <h3>Font size</h3>
+          <input type="number" id="fontsize" value="40" min="20" max="200">
+        </div>
+
+        <div class="flex">
+          <h3>Text shadow</h3>
+        </div>
+        <div class="flex">
+          X<input id="shadowX" type="number" value="0" />
+          Y<input id="shadowY" type="number" value="0" />
+          Blur<input id="shadowBlur" type="number" value="0" min="0" />
+          <div id="shadowColor" class="color">g</div>
+        </div>
+
+        <div class="flex">
+          <h3>text alignment</h3>
+        </div>
+
+        <div>
+          <div class="table">
+            <div class="rows">
+              <div class="tab">⇖</div>
+              <div class="tab">⇑</div>
+              <div class="tab">⇗</div>
+              <div class="tab">⟸</div>
+              <div class="tab current">⚬</div>
+              <div class="tab">⇒</div>
+              <div class="tab">⇙</div>
+              <div class="tab">⇓</div>
+              <div class="tab">⇘</div>
+
+            </div>
+          </div>
+        </div>
+
+        <div class="flex">
+          <h3>background image</h3>
+        </div>
+
+        <div class="flex">
+          <span id="resetbg" onclick="resetbg()">
+            reset
+          </span>
+          <input type="file"  id="upload" name="bg-image-upload" />
+        </div>
+
+        
+
+      </div>
+
+    </section>
+  </main>
+</body>
+
+</html>
