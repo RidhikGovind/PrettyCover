@@ -151,7 +151,7 @@ header {
 
 .fontNameDisplay:before {
   position: absolute;
-  content: var(--content);
+  content: var(--content-text);
   top: -35px;
   left: -20px;
   width: 120px;
@@ -162,7 +162,7 @@ header {
   justify-content: center;
   align-items: center;
   border-radius: 10px;
-  display: var(--display);
+  display: var(--display-text);
 }
 
 button {
