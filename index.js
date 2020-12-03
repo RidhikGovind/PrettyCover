@@ -134,3 +134,18 @@ const resetbg = () => {
   editBoard.style.backgroundImage = "";
   document.getElementById("resetbg").style.display = "none";
 };
+
+//here we are shuffling the fonts in the array and setting it as the selected font
+
+const shuffleFonts = () => {
+  const arr = ["Montserrat", "Comfortaa", "Bangers", "Jost", "Raleway"];
+  const num = Math.floor(Math.random() * 5);
+  const resultFont = arr[num];
+  document.querySelector(".text").style.fontFamily = resultFont;
+
+  //changing the font name inside the 'fontNameDisplay' span
+  root.style.setProperty("--content-text", `"${resultFont}"`);
+
+  //changing the display property inside the 'fontNameDisplay' span
+  root.style.setProperty("--display-text", `flex`);
+};

@@ -1,17 +1,17 @@
 :root {
-  
   --background-color: #000;
   --foreground-color: #fff;
   --border-color: #6fec32;
   --font-raleway: "Raleway", sans-serif;
-  --font-comfortaa: "Comfortaa", cursive;
   --shadowX-size: 0;
   --shadowY-size: 0;
   --shadowBlur-size: 0;
   --borderWidth-size: 0;
   --shadow-color: rgba(0, 0, 0, 0.4);
   --font-size: 40px;
-  --height-editboard: 60vh;
+  --height-editboard: 50vh;
+  --content-text: "";
+  --display-text: none;
 }
 
 * {
@@ -30,7 +30,6 @@ body {
   word-break: break-all;
   font-family: var(--font-raleway);
   background: linear-gradient(to left, #78bae3 0%, #ffffff 53%);
-  /* font-family:  */
 }
 
 a {
@@ -43,7 +42,6 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 1.3rem;
-  /* background: lightskyblue; */
 }
 
 .github-logo {
@@ -51,19 +49,14 @@ header {
   width: 40px;
 }
 .workspace {
-  height: 100vh;
+  height: 190vh;
   display: grid;
   grid-template-columns: 2fr 1fr;
-  /* display: flex;
-  width: 100%;
-  height: 100%;
-  justify-content: center; */
 }
 
 /* ******Editor section******** */
 
 .editor {
-  /* background: lightgreen; */
   padding: 1rem;
   position: sticky;
   top: 0;
@@ -72,7 +65,7 @@ header {
 
 #editBoard {
   position: sticky;
-  background-color:var(--background-color);
+  background-color: var(--background-color);
   color: var(--foreground-color);
   border: var(--borderWidth-size) solid var(--border-color);
   top: 16px;
@@ -96,19 +89,21 @@ header {
 
 .text {
   font-size: var(--font-size);
-  text-shadow: var(--shadowX-size) var(--shadowY-size) var(--shadowBlur-size) var(--shadow-color);
+  text-shadow: var(--shadowX-size) var(--shadowY-size) var(--shadowBlur-size)
+    var(--shadow-color);
   line-height: 2.5rem;
   padding: 1rem;
+
+  font-family: "Raleway";
 }
 
 /* *******Controls section********* */
 
 .controls {
   margin: 1rem;
-
 }
 
-.color{
+.color {
   width: 40px;
   height: 40px;
   border: 2px solid rgba(255, 255, 255, 0.87);
@@ -116,34 +111,64 @@ header {
   cursor: pointer;
 }
 
-#background{
-  background:var(--background-color)
+#background {
+  background: var(--background-color);
 }
 
-#foreground{
-  background:var(--foreground-color)
+#foreground {
+  background: var(--foreground-color);
 }
 
-#border{
-  background:var(--border-color)
+#border {
+  background: var(--border-color);
 }
 
-#shadow{
-  background:var(--shadow-color)
+#shadow {
+  background: var(--shadow-color);
 }
 
 .actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  padding: 0.5rem;
+  display: flex;
+  padding: 0.2rem;
 }
-button {
-  /* background: black;
-  color: white; */
+.action-buttons {
+  margin: 1.5rem;
+  padding: 0.4rem;
+  cursor: pointer;
+  border-radius: 10px;
   background: rgb(255, 255, 255);
+  transition: 0.5s ease all;
+  position: relative;
+}
 
+.action-buttons:hover {
+  background: rgba(0, 0, 0, 0.3);
+}
+.action-buttons img {
+  width: 70px;
+  height: 70px;
+}
+
+.fontNameDisplay:before {
+  position: absolute;
+  content: var(--content);
+  top: -35px;
+  left: -20px;
+  width: 120px;
+  height: 30px;
+  background: black;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  display: var(--display);
+}
+
+button {
+  color: white;
+  background: rgb(255, 255, 255);
   border: 2px solid rgb(195, 195, 195);
-  /* border: none; */
   padding: 0.9rem;
   margin: 0.3rem 0.5rem;
   border-radius: 10px;
@@ -166,25 +191,18 @@ button:hover {
   flex-grow: 1;
 }
 
-/* .table {
-} */
-
 .rows {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(3, 1fr);
-
   justify-content: center;
   text-align: center;
-
   background: black;
-
   border-radius: 10px;
 }
 
 .tab {
   padding: 0.3rem;
-
   color: white;
   font-size: 2rem;
   cursor: pointer;
@@ -193,7 +211,6 @@ button:hover {
 .current {
   background-color: #90d5ec;
   background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);
-
   border-radius: 10px;
 }
 
@@ -201,7 +218,6 @@ input {
   background: black;
   color: white;
   border-radius: 10px;
-
 }
 
 input[type="number"] {
@@ -209,7 +225,6 @@ input[type="number"] {
   height: 40px;
   width: 50px;
   font-size: 1rem;
-
   border: none;
 }
 
@@ -224,7 +239,6 @@ input[type="file"] {
 
 input[type="file"]:before {
   content: "upload";
-
   line-height: 2.5;
   text-align: center;
   font-size: 1rem;
@@ -257,7 +271,10 @@ input[type="file"]::-webkit-file-upload-button {
   .workspace {
     display: grid;
     grid-template-columns: 1fr;
-
     grid-template-rows: 1fr 1fr;
+  }
+
+  .action-buttons {
+    background: rgba(192, 192, 192, 0.719);
   }
 }

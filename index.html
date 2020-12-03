@@ -1,133 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PrettyCover - Create beautiful cover images for your blogs</title>
+    <meta
+      name="description"
+      content=" Create beautiful cover images for your blogs"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrettyCover - Create beautiful cover images for your blogs</title>
-  <meta name="description" content=" Create beautiful cover images for your blogs" />
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,700&display=swap"
+      rel="stylesheet"
+    />
 
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.gstatic.com">
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,700&display=swap"
+      rel="stylesheet"
+    />
 
-<link rel="stylesheet" href="index.css" />
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script src="https://unpkg.com/vanilla-picker"></script>
-</head>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bangers&display=swap"
+      rel="stylesheet"
+    />
 
-<body>
-  <main role="main" class="container">
-    <header>
-      <h1 class="app-title">PrettyCover.</h1>
-      <div>
-        <a href="https://github.com/RidhikGovind" target="_blank">
-          <img src="icons/github-logo.png" class="github-logo" alt="github-logo">
-        </a>
-      </div>
-    </header>
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Jost:wght@600&display=swap"
+      rel="stylesheet"
+    />
 
-    <section class="workspace">
-      <div class="editor">
-        <div id="editBoard">
-          <div id="text" class="text" contenteditable="true" aria-placeholder="Text goes here">
-            Text goes here
-          </div>
+    <link rel="stylesheet" href="index.css" />
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://unpkg.com/vanilla-picker"></script>
+  </head>
+
+  <body>
+    <main role="main" class="container">
+      <header>
+        <h1 class="app-title">PrettyCover.</h1>
+        <div>
+          <a href="https://github.com/RidhikGovind" target="_blank">
+            <img
+              src="icons/github-logo.png"
+              class="github-logo"
+              alt="github-logo"
+            />
+          </a>
         </div>
-      </div>
+      </header>
 
-
-      <div class="controls">
-
-        <div class="actions ">
-          <button id="download" onclick="download()">Download</button>
-          <button id="random" onclick=randomize()>Randomize</button>
-          
-        </div>
-
-        <div class="flex">
-          <h3>Background Color</h3>
-          <div id="background" class="color"></div>
-        </div>
-        <div class="flex">
-          <h3>Foreground Color</h3>
-          <div id="foreground" class="color"></div>
-        </div>
-        <div class="flex">
-          <h3>Border Color</h3>
-          <div id="border" class="color"></div>
-        </div>
-        <div class="flex">
-          <h3>Border Width</h3>
-          <input type="number" id="borderWidth" value="0" min="0" max="50" oninput="borderWidth(this)">
-
-        </div>
-
-        <div class="flex">
-          <h3>Font size</h3>
-          <input type="number" id="fontsize" value="40" min="20" max="200" oninput="fontSize(this)">
-        </div>
-
-        <div class="flex">
-          <h3>Height ratio</h3>
-          <input id="heightRatio" type="number" value="60" min="40" max="100" step="5" oninput="heightRatio(this)"/>
-        </div>
-
-        <div class="flex">
-          <h3>Text shadow</h3>
-        </div>
-        <div class="flex">
-          X<input id="shadowX" type="number" value="0"  oninput="shadowX(this)"/>
-          Y<input id="shadowY" type="number" value="0"  oninput="shadowY(this)"/>
-          Blur<input id="shadowBlur" type="number" value="0" min="0"  oninput="shadowBlur(this)"/>
-          <div id="shadow" class="color"></div>
-        </div>
-        
-
-        <div class="flex">
-          <h3>text alignment</h3>
-        </div>
-
-        <div style="margin: 10px;">
-          <div class="table">
-            <div class="rows">
-              <div class="tab" onclick="textAlign(this, 'left', 'flex-start')">⇖</div>
-              <div class="tab" onclick="textAlign(this, 'center', 'flex-start')">⇑</div>
-              <div class="tab" onclick="textAlign(this, 'right', 'flex-start')">⇗</div>
-              <div class="tab" onclick="textAlign(this, 'left', 'center')">⟸</div>
-              <div class="tab current" onclick="textAlign(this, 'center', 'center')">⚬</div>
-              <div class="tab" onclick="textAlign(this, 'right', 'center')">⇒</div>
-              <div class="tab" onclick="textAlign(this, 'left', 'flex-end')">⇙</div>
-              <div class="tab" onclick="textAlign(this, 'center', 'flex-end')">⇓</div>
-              <div class="tab" onclick="textAlign(this, 'right', 'flex-end')">⇘</div>
-
+      <section class="workspace">
+        <div class="editor">
+          <div id="editBoard">
+            <div
+              id="text"
+              class="text"
+              contenteditable="true"
+              aria-placeholder="Text goes here"
+            >
+              Text goes here
             </div>
           </div>
         </div>
 
-        <div class="flex">
-          <h3>background image</h3>
+        <div class="controls">
+          <div class="actions">
+            <div class="action-buttons" onclick="randomize()">
+              <img src="icons/shuffle.svg" alt="" />
+            </div>
+            <div class="action-buttons" onclick="shuffleFonts()">
+              <span class="fontNameDisplay"></span>
+              <img src="icons/font.svg" alt="" />
+            </div>
+            <div class="action-buttons" onclick="download()">
+              <img src="icons/direct-download.svg" alt="" />
+            </div>
+          </div>
+
+          <div class="flex">
+            <h3>Background Color</h3>
+            <div id="background" class="color"></div>
+          </div>
+          <div class="flex">
+            <h3>Foreground Color</h3>
+            <div id="foreground" class="color"></div>
+          </div>
+          <div class="flex">
+            <h3>Border Color</h3>
+            <div id="border" class="color"></div>
+          </div>
+          <div class="flex">
+            <h3>Border Width</h3>
+            <input
+              type="number"
+              id="borderWidth"
+              value="0"
+              min="0"
+              max="50"
+              oninput="borderWidth(this)"
+            />
+          </div>
+
+          <div class="flex">
+            <h3>Font size</h3>
+            <input
+              type="number"
+              id="fontsize"
+              value="40"
+              min="20"
+              max="200"
+              oninput="fontSize(this)"
+            />
+          </div>
+
+          <div class="flex">
+            <h3>Height ratio</h3>
+            <input
+              id="heightRatio"
+              type="number"
+              value="50"
+              min="40"
+              max="100"
+              step="5"
+              oninput="heightRatio(this)"
+            />
+          </div>
+
+          <div class="flex">
+            <h3>Text shadow</h3>
+          </div>
+          <div class="flex">
+            X<input
+              id="shadowX"
+              type="number"
+              value="0"
+              oninput="shadowX(this)"
+            />
+            Y<input
+              id="shadowY"
+              type="number"
+              value="0"
+              oninput="shadowY(this)"
+            />
+            Blur<input
+              id="shadowBlur"
+              type="number"
+              value="0"
+              min="0"
+              oninput="shadowBlur(this)"
+            />
+            <div id="shadow" class="color"></div>
+          </div>
+
+          <div class="flex">
+            <h3>text alignment</h3>
+          </div>
+
+          <div style="margin: 10px">
+            <div class="table">
+              <div class="rows">
+                <div
+                  class="tab"
+                  onclick="textAlign(this, 'left', 'flex-start')"
+                >
+                  ⇖
+                </div>
+                <div
+                  class="tab"
+                  onclick="textAlign(this, 'center', 'flex-start')"
+                >
+                  ⇑
+                </div>
+                <div
+                  class="tab"
+                  onclick="textAlign(this, 'right', 'flex-start')"
+                >
+                  ⇗
+                </div>
+                <div class="tab" onclick="textAlign(this, 'left', 'center')">
+                  ⟸
+                </div>
+                <div
+                  class="tab current"
+                  onclick="textAlign(this, 'center', 'center')"
+                >
+                  ⚬
+                </div>
+                <div class="tab" onclick="textAlign(this, 'right', 'center')">
+                  ⇒
+                </div>
+                <div class="tab" onclick="textAlign(this, 'left', 'flex-end')">
+                  ⇙
+                </div>
+                <div
+                  class="tab"
+                  onclick="textAlign(this, 'center', 'flex-end')"
+                >
+                  ⇓
+                </div>
+                <div class="tab" onclick="textAlign(this, 'right', 'flex-end')">
+                  ⇘
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="flex">
+            <h3>background image</h3>
+          </div>
+
+          <div class="flex">
+            <span id="resetbg" class="resetbg" onclick="resetbg()">
+              reset
+            </span>
+            <input type="file" id="uploadImg" name="bg-image-upload" />
+          </div>
         </div>
+      </section>
+    </main>
 
-        <div class="flex ">
-          <span id="resetbg" class="resetbg" onclick="resetbg()">
-            reset
-          </span>
-          <input type="file" id="uploadImg" name="bg-image-upload" />
-        </div>
-
-        
-
-      </div>
-
-    </section>
-  </main>
-
-  
-<script src="index.js"></script>
-
-</body>
-
+    <script src="index.js"></script>
+  </body>
 </html>
