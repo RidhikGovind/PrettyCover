@@ -4,6 +4,7 @@ const border = document.getElementById("border");
 const shadow = document.getElementById("shadow");
 const root = document.querySelector(":root");
 const editBoard = document.getElementById("editBoard");
+const uploadImg = document.getElementById("uploadImg");
 
 //create instances of vanilla picker and apply it to the respective parent elements
 let picker1 = new Picker({
@@ -91,21 +92,45 @@ const saveAs = (uri, filename) => {
   }
 };
 
-
 //creating various functions for updating their values with the inputs from the user
 //using es6 destructuring to grab the 'value' property using 'this' as function parameter
-const borderWidth = ({value}) => root.style.setProperty("--borderWidth-size", `${value}px`);
-const fontSize = ({value}) => root.style.setProperty("--font-size", `${value}px`);
-const shadowX = ({value}) => root.style.setProperty("--shadowX-size", `${value}px`);
-const shadowY = ({value}) => root.style.setProperty("--shadowY-size", `${value}px`);
-const shadowBlur = ({value}) => root.style.setProperty("--shadowBlur-size", `${value}px`);
-const heightRatio = ({value}) => root.style.setProperty("--height-editboard", `${value}vh`);
+const borderWidth = ({ value }) =>
+  root.style.setProperty("--borderWidth-size", `${value}px`);
+const fontSize = ({ value }) =>
+  root.style.setProperty("--font-size", `${value}px`);
+const shadowX = ({ value }) =>
+  root.style.setProperty("--shadowX-size", `${value}px`);
+const shadowY = ({ value }) =>
+  root.style.setProperty("--shadowY-size", `${value}px`);
+const shadowBlur = ({ value }) =>
+  root.style.setProperty("--shadowBlur-size", `${value}px`);
+const heightRatio = ({ value }) =>
+  root.style.setProperty("--height-editboard", `${value}vh`);
 
 //text alignment
 const textAlign = ({ classList }, a, b) => {
-    document.querySelector('.current').classList.toggle('current')
-    editBoard.style.textAlign = a;
-    editBoard.style.justifyContent = b;
-    classList.add("current")
-}
+  document.querySelector(".current").classList.toggle("current");
+  editBoard.style.textAlign = a;
+  editBoard.style.justifyContent = b;
+  classList.add("current");
+};
 
+//file uploading
+const upload = () => {
+  const file = uploadImg.files[0];
+  const reader = new FileReader();
+  reader.onloadend = () => {
+    editBoard.style.backgroundImage = `url(${reader.result})`;
+  };
+  if (file) {
+    reader.readAsDataURL(file);
+    document.getElementById("resetbg").style.display = "inline-flex";
+  }
+};
+
+uploadImg.addEventListener("change", upload, true);
+
+const resetbg = () => {
+  editBoard.style.backgroundImage = "";
+  document.getElementById("resetbg").style.display = "none";
+};

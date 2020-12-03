@@ -11,7 +11,7 @@
   --borderWidth-size: 0;
   --shadow-color: rgba(0, 0, 0, 0.4);
   --font-size: 40px;
-  --height-editboard: 50vh;
+  --height-editboard: 60vh;
 }
 
 * {
@@ -28,10 +28,8 @@ body {
   width: 100%;
   user-select: none;
   word-break: break-all;
-  
   font-family: var(--font-raleway);
   background: linear-gradient(to left, #78bae3 0%, #ffffff 53%);
-  
   /* font-family:  */
 }
 
@@ -84,6 +82,9 @@ header {
   justify-content: center;
   text-align: center;
   flex-direction: column;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 /* This will allow us to edit the input text */
@@ -243,6 +244,7 @@ input[type="file"]::-webkit-file-upload-button {
   border-radius: 10px;
   padding: 10px 15px;
   cursor: pointer;
+  display: none;
 }
 
 .resetbg:hover {
