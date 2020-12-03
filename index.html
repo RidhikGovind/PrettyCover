@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PrettyCovers - Create beautiful cover images for your blogs</title>
+  <title>PrettyCover - Create beautiful cover images for your blogs</title>
   <meta name="description" content=" Create beautiful cover images for your blogs" />
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -13,17 +13,19 @@
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
 
-
-  <link rel="stylesheet" href="index.css" />
-
+<link rel="stylesheet" href="index.css" />
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+<script src="https://unpkg.com/vanilla-picker"></script>
 </head>
 
 <body>
   <main role="main" class="container">
     <header>
-      <h1 class="app-title">Covers.</h1>
+      <h1 class="app-title">PrettyCover.</h1>
       <div>
-        <a href="#">github logo</a>
+        <a href="https://github.com/RidhikGovind" target="_blank">
+          <img src="icons/github-logo.png" class="github-logo" alt="github-logo">
+        </a>
       </div>
     </header>
 
@@ -40,59 +42,66 @@
       <div class="controls">
 
         <div class="actions ">
-          <button id="download">Download</button>
-          <button id="random">Randomize</button>
+          <button id="download" onclick="download()">Download</button>
+          <button id="random" onclick=randomize()>Randomize</button>
+          
         </div>
 
         <div class="flex">
           <h3>Background Color</h3>
-          <div id="bgc" class="color">g</div>
+          <div id="background" class="color"></div>
         </div>
         <div class="flex">
           <h3>Foreground Color</h3>
-          <div id="fgc" class="color">g</div>
+          <div id="foreground" class="color"></div>
         </div>
         <div class="flex">
           <h3>Border Color</h3>
-          <div id="bc" class="color">g</div>
+          <div id="border" class="color"></div>
         </div>
         <div class="flex">
           <h3>Border Width</h3>
-          <input type="number" id="borderWidth" value="0" min="0" max="50">
+          <input type="number" id="borderWidth" value="0" min="0" max="50" oninput="borderWidth(this)">
 
         </div>
 
         <div class="flex">
           <h3>Font size</h3>
-          <input type="number" id="fontsize" value="40" min="20" max="200">
+          <input type="number" id="fontsize" value="40" min="20" max="200" onclick="fontSize(this)">
+        </div>
+
+        <div class="flex">
+          <h3>Height ratio</h3>
+          <input id="heightRatio" type="number" value="50" min="40" max="100" step="5" onchange="heightRatio(this)"/>
         </div>
 
         <div class="flex">
           <h3>Text shadow</h3>
         </div>
         <div class="flex">
-          X<input id="shadowX" type="number" value="0" />
-          Y<input id="shadowY" type="number" value="0" />
-          Blur<input id="shadowBlur" type="number" value="0" min="0" />
-          <div id="shadowColor" class="color">g</div>
+          X<input id="shadowX" type="number" value="0" onclick="shadowX(this)"/>
+          Y<input id="shadowY" type="number" value="0" onclick="shadowY(this)"/>
+          Blur<input id="shadowBlur" type="number" value="0" min="0" onclick="shadowBlur(this)"/>
+          <div id="shadow" class="color"></div>
         </div>
+        
 
         <div class="flex">
           <h3>text alignment</h3>
         </div>
 
-        <div>
+        <div style="margin: 10px;">
           <div class="table">
             <div class="rows">
-              <div class="tab">⇖</div>
-              <div class="tab">⇑</div>
-              <div class="tab">⇗</div>
-              <div class="tab">⟸</div>
-              <div class="tab current">⚬</div>
-              <div class="tab">⇒</div>
-              <div class="tab">⇙</div>
-              <div class="tab">⇓</div>
-              <div class="tab">⇘</div>
+              <div class="tab" onclick="textAlign(this, 'left', 'flex-start')">⇖</div>
+              <div class="tab" onclick="textAlign(this, 'center', 'flex-start')">⇑</div>
+              <div class="tab" onclick="textAlign(this, 'right', 'flex-start')">⇗</div>
+              <div class="tab" onclick="textAlign(this, 'left', 'center')">⟸</div>
+              <div class="tab current" onclick="textAlign(this, 'center', 'center')">⚬</div>
+              <div class="tab" onclick="textAlign(this, 'right', 'center')">⇒</div>
+              <div class="tab" onclick="textAlign(this, 'left', 'flex-end')">⇙</div>
+              <div class="tab" onclick="textAlign(this, 'center', 'flex-end')">⇓</div>
+              <div class="tab" onclick="textAlign(this, 'right', 'flex-end')">⇘</div>
 
             </div>
           </div>
@@ -102,11 +111,11 @@
           <h3>background image</h3>
         </div>
 
-        <div class="flex">
-          <span id="resetbg" onclick="resetbg()">
+        <div class="flex ">
+          <span id="resetbg" class="resetbg" onclick="resetbg()">
             reset
           </span>
-          <input type="file"  id="upload" name="bg-image-upload" />
+          <input type="file" id="upload" name="bg-image-upload" />
         </div>
 
         
@@ -115,6 +124,10 @@
 
     </section>
   </main>
+
+  
+<script src="index.js"></script>
+
 </body>
 
 </html>

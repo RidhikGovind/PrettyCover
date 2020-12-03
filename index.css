@@ -1,11 +1,18 @@
 :root {
+  
+  --background-color: #000;
+  --foreground-color: #fff;
+  --border-color: #6fec32;
   --font-raleway: "Raleway", sans-serif;
   --font-comfortaa: "Comfortaa", cursive;
-  --bg-color: black;
-  --fg-color: white;
-  --ts-color: rgba(0,0,0,0.4)
+  --shadowX-size: 0;
+  --shadowY-size: 0;
+  --shadowBlur-size: 0;
+  --borderWidth-size: 0;
+  --shadow-color: rgba(0, 0, 0, 0.4);
+  --font-size: 40px;
+  --height-editboard: 50vh;
 }
-
 
 * {
   padding: 0;
@@ -13,7 +20,7 @@
   outline: 0;
   box-sizing: border-box;
   font-weight: 600;
-  transition: 0.3s ease all;
+  transition: 0.2s ease all;
 }
 
 body {
@@ -21,7 +28,10 @@ body {
   width: 100%;
   user-select: none;
   word-break: break-all;
+  
   font-family: var(--font-raleway);
+  background: linear-gradient(to left, #78bae3 0%, #ffffff 53%);
+  
   /* font-family:  */
 }
 
@@ -29,18 +39,19 @@ a {
   text-decoration: none;
   display: inline-flex;
 }
+
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 1.3rem;
-  background: lightskyblue;
+  /* background: lightskyblue; */
 }
 
-header .app-title {
-  font-style: italic;
+.github-logo {
+  height: 40px;
+  width: 40px;
 }
-
 .workspace {
   height: 100vh;
   display: grid;
@@ -54,7 +65,7 @@ header .app-title {
 /* ******Editor section******** */
 
 .editor {
-  background: lightgreen;
+  /* background: lightgreen; */
   padding: 1rem;
   position: sticky;
   top: 0;
@@ -63,16 +74,19 @@ header .app-title {
 
 #editBoard {
   position: sticky;
-  background-color: darkgrey;
+  background-color:var(--background-color);
+  color: var(--foreground-color);
+  border: var(--borderWidth-size) solid var(--border-color);
   top: 16px;
-  height: 50vh;
+  height: var(--height-editboard);
   width: 100%;
   display: flex;
   justify-content: center;
-  align-items: center;
+  text-align: center;
   flex-direction: column;
 }
 
+/* This will allow us to edit the input text */
 [contenteditable="true"]:empty:before {
   display: block;
   content: attr(aria-placeholder);
@@ -80,7 +94,8 @@ header .app-title {
 }
 
 .text {
-  font-size: 40px;
+  font-size: var(--font-size);
+  text-shadow: var(--shadowX-size) var(--shadowY-size) var(--shadowBlur-size) var(--shadow-color);
   line-height: 2.5rem;
   padding: 1rem;
 }
@@ -90,7 +105,30 @@ header .app-title {
 .controls {
   margin: 1rem;
 
-  /* background: lightpink; */
+}
+
+.color{
+  width: 40px;
+  height: 40px;
+  border: 2px solid rgba(255, 255, 255, 0.87);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+#background{
+  background:var(--background-color)
+}
+
+#foreground{
+  background:var(--foreground-color)
+}
+
+#border{
+  background:var(--border-color)
+}
+
+#shadow{
+  background:var(--shadow-color)
 }
 
 .actions {
@@ -99,19 +137,24 @@ header .app-title {
   padding: 0.5rem;
 }
 button {
-  background: black;
-  color: white;
-  border: none;
+  /* background: black;
+  color: white; */
+  background: rgb(255, 255, 255);
+
+  border: 2px solid rgb(195, 195, 195);
+  /* border: none; */
   padding: 0.9rem;
   margin: 0.3rem 0.5rem;
   border-radius: 10px;
   cursor: pointer;
-  transition: 1s ease all;
+  transition: 0.5s ease all;
+  font-size: 1.2rem;
 }
 
 button:hover {
   background-color: #90d5ec;
   background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);
+  border: 2px solid rgb(0, 0, 0);
 }
 
 .flex {
@@ -133,7 +176,7 @@ button:hover {
   justify-content: center;
   text-align: center;
 
-  background: var(--bg-color);
+  background: black;
 
   border-radius: 10px;
 }
@@ -153,26 +196,58 @@ button:hover {
   border-radius: 10px;
 }
 
-input[type="number"] {
-  padding: 15px;
-  width: 60px;
-  background: var(--bg-color);
-  color: var(--fg-color);
-  border: none;
+input {
+  background: black;
+  color: white;
   border-radius: 10px;
+
 }
 
+input[type="number"] {
+  padding: 5px;
+  height: 40px;
+  width: 50px;
+  font-size: 1rem;
 
+  border: none;
+}
+
+/*******refer: inline-flex -> https://stackoverflow.com/questions/27418104/whats-the-difference-between-displayinline-flex-and-displayflex */
+/* inline-flex makes the container/parent element inline */
 input[type="file"] {
   display: inline-flex;
-  width: 100px;
-  height: 20px;
+  width: 80px;
+  height: 40px;
+  cursor: pointer;
 }
 
+input[type="file"]:before {
+  content: "upload";
 
+  line-height: 2.5;
+  text-align: center;
+  font-size: 1rem;
+}
 
-input[type="file"]::-webkit-file-upload-button{
+input[type="file"]:hover:before {
+  background-color: #90d5ec;
+  background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);
+}
+
+input[type="file"]::-webkit-file-upload-button {
   visibility: hidden;
+}
+
+.resetbg {
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.resetbg:hover {
+  background: #eee;
+  border: 2px solid black;
 }
 
 /* default is 900 okay ? */
