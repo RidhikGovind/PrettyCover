@@ -1,4 +1,4 @@
-# PrettyCover - 
+# PrettyCover - ![](icons/prettyCover-64.png)
 # Create beautiful cover images for your blogs
 
 ![](icons/PrettyCover-screenshot.png)
