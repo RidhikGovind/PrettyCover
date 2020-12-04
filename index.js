@@ -60,12 +60,12 @@ const generateRandomHexColor = () => {
 console.log(generateRandomHexColor());
 
 //function to set the root styles with the random Hex colors
-const randomize = () => {
+const shuffleColors = () => {
   root.style.setProperty("--background-color", generateRandomHexColor());
   root.style.setProperty("--foreground-color", generateRandomHexColor());
   root.style.setProperty("--border-color", generateRandomHexColor());
 };
-randomize();
+shuffleColors();
 
 //download the image part by capturing using html2canvas
 //view https://html2canvas.hertzen.com/documentation for more info
